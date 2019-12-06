@@ -15,8 +15,10 @@ usage() {
 	echo "      Specify roughly where messages should be wrapped."
 	echo "    -l, --list"
 	echo "      List all the pokémon available."
-	echo "    -n, --no-name"
+	echo "    -N, --no-name"
 	echo "      Do not tell the pokémon name."
+    echo "    -n, --no-wrap"
+	echo "      If it is specified, the given message will not be word-wrapped."
 	echo "    -t, --think"
 	echo "      Make the pokémon think the message, instead of saying it."
 	echo "    -h, --help"
@@ -73,8 +75,12 @@ case $key in
 	-l|--list)
 		list_pokemon
 		;;
-	-n|--no-name)
+	-N|--no-name)
 		DISPLAY_NAME="NO"
+		shift
+		;;
+    -n|--no-wrap)
+		NO_WRAP="TRUE"
 		shift
 		;;
 	-t|--think)
@@ -104,6 +110,11 @@ done
 # Define where to wrap the message.
 if [ -n "$WORD_WRAP" ]; then
 	word_wrap="-W $WORD_WRAP"
+fi
+
+# Define no wrap. when no_wrap be set, ignore all of other wraps.
+if [ -n "$NO_WRAP" ]; then
+    word_wrap="-n"
 fi
 
 # Define which pokemon should be displayed.
