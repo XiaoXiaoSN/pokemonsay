@@ -1,59 +1,39 @@
 pokemonsay
 ==========
 
+The project forked from [possatti/pokemonsay](https://github.com/possatti/pokemonsay)
+
 ![You should try pokemonsay!](example.png)
 
 `pokemonsay` is like [`cowsay`][cowsay] but for pokémon only. It was inspired by [`ponysay`][ponysay] (`cowsay` for ponies). Internally, `pokemonsay` still uses `cowsay`, so you need it installed too (`cowsay`... not `ponysay`).
 
 ## Installation
 
-### Ubuntu
-
-If you simply want to use `pokemonsay`, the only thing you need installed is `cowsay`. But you are probably interested in `fortune` as well, to provide random sayings to your pokémon. To install them both in Ubuntu, simply run:
-
-```bash
-$ sudo apt-get install fortune cowsay
-```
-
-If you want to rebuild everything in the repository, you will also need [`img2xterm`][img2xterm]. `img2xterm` is used to generate ".cow files" from the pokémon images. To install it you will need to build from source. The instructions are provided on their repository. And if you know an easier way, please tell me!
-
-Keep in mind that `pokemonsay` will only work if you have `cowsay` installed and available in your `$PATH`. To install `pokemonsay` run these commands in a terminal window:
-
-```bash
-$ git clone http://github.com/possatti/pokemonsay
-$ cd pokemonsay
-$ ./install.sh
-```
-
-After the last command, you will have `pokemonsay` installed in you home folder in `~/.pokemonsay/`. And an executable script will be created in `~/bin/pokemonsay`, so that you can have `pokemonsay` in your `$PATH` too.
-
-It may be necessary to logout and login back again to have `pokemonsay` in you `$PATH`. This is specially true if you have never had a `~/bin/` folder before. Your operating system will have it added to you `$PATH` automatically after the `~/bin/` folder is created... I hope.
-
 ### OS X
 
 You can install `pokemonsay` through Homebrew. It is pretty straightforward:
 
 ```sh
-$ brew tap possatti/possatti
+$ brew tap xiaoxiaosn/xiaoxiao
 $ brew install pokemonsay
 ```
-
-### Docker
-
-There's an interesting fork by @xaviervia that allows you to run `pokemonsay` on Docker. Check out [xaviervia/docker-pokemonsay](https://github.com/xaviervia/docker-pokemonsay).
 
 ## Usage
 
 Now that you've installed `pokemonsay`, you can make it work like so:
 
 ```bash
-$ pokemonsay Hello World
+$ pokesay Hello World
+```
+
+```bash
+$ docker ps | pokesay -n $1
 ```
 
 To have a random pokémon saying some random thing to you, use `fortune`:
 
 ```bash
-$ fortune | pokemonsay
+$ fortune | pokesay
 ```
 
 And if you really like it, you can add the command above to the end of your `~/.bashrc` file (or equivalent). So you will have a random pokémon speaking to you whenever you open a new terminal window! :D
@@ -61,7 +41,7 @@ And if you really like it, you can add the command above to the end of your `~/.
 You get a cowthink-like version too. Try it:
 
 ```bash
-$ pokemonthink --pokemon Charmander "Should I wear some clothes?"
+$ pokethink --pokemon Charmander "Should I wear some clothes?"
 ```
 
 ## Uninstall
